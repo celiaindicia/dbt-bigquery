@@ -39,5 +39,9 @@ models:
   jaffle_shop:
     staging:
       +materialized: view
+      stripe:
+        +materialized: view
     marts:
       +materialized: table
+      finance:
+        +materialized: table
