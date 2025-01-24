@@ -19,3 +19,19 @@ models:
             tests:
                 - unique
                 - not_null
+    - name: stg_stripe__payments
+      description: "Modelo de pagos de Stripe"
+      tests:
+        - assert_positive_value_for_total_amount  
+    - name: stg_jaffle_shop__orders
+      description: "Modelo de pedidos de Jaffle Shop"
+      tests:
+        - relationships:
+            from: customer_id
+            to: "{{ ref('stg_jaffle_shop__customers') }}.customer_id" 
+    - name: stg_jaffle_shop__customers
+      description: "Modelo de clientes de Jaffle Shop"
+      tests:
+        - unique: customer_id 
+        - not_null: customer_id  
+
